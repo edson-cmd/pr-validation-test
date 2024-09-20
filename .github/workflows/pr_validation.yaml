@@ -16,6 +16,12 @@ jobs:
           echo "Target Branch: $PR_TARGET"
           echo "Source Branch: $PR_SOURCE"
 
+          # Check if the source branch is a revert branch
+          if [[ "$PR_SOURCE" == revert-* ]]; then
+            echo "PR from revert branch is allowed."
+            exit 0
+          fi
+
           # Define allowed branches
           if [ "$PR_TARGET" = "main" ]; then
             if [ "$PR_SOURCE" != "uat" ]; then
