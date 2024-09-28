@@ -23,8 +23,4 @@ jobs:
           run: |
             echo "This is job is running due to a previous job failure..."
         
-        - name: Ensure overall workflow fails
-          run: |
-            echo "Now that the error action occured, the whole workflow will fail..."
-            exit 1
         
