@@ -11,13 +11,15 @@ jobs:
 
     steps:
       - name: Fail on purpose
+        id: fail
         run: |
           echo "This job is failing..."
           exit 1
       
       - name: Run on fail
+        if: failure() && steps.fail.outcome == 'failure'
         run: |
-          echo "This is running in response to a previous step failure..."
+          echo "This is running in response to a specific previous step failure..."
 
   run_on_failure_job:
     runs-on: ubuntu-latest
