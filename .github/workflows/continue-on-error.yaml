@@ -19,14 +19,3 @@ jobs:
         if: failure() && steps.fail.outcome == 'failure'
         run: |
           echo "This is running in response to a specific previous step failure..."
-
-  run_on_failure_job:
-    runs-on: ubuntu-latest
-    needs: [failing_job]
-    if: failure() && needs.failing_job.result == 'failure'
-    steps:
-        - name: Acknowledge run
-          run: |
-            echo "This is job is running due to a previous job failure..."
-        
-        
