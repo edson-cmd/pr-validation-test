@@ -18,4 +18,4 @@ jobs:
             python print_message.py
       - name: Display Hello
         run: |
-            echo "${{ steps.hello.outputs.message }}""
+            echo "${{ steps.hello.outputs.message }}"
