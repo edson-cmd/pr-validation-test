@@ -1,0 +1,21 @@
+name: Continue on error
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  failing_job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Fail on purpose
+        id: fail
+        run: |
+          echo "This job is failing..."
+          exit 1
+      
+      - name: Run on fail
+        if: failure() && steps.fail.outcome == 'failure'
+        run: |
+          echo "This is running in response to a specific previous step failure..."
