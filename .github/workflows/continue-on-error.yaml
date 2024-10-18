@@ -7,7 +7,6 @@ on:
 jobs:
   failing_job:
     runs-on: ubuntu-latest
-    continue-on-error: true
 
     steps:
       - name: Fail on purpose
