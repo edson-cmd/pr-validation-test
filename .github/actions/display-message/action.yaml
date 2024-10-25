@@ -15,7 +15,7 @@ runs:
     # Capture the output from GITHUB_OUTPUT and set it as the action's output
     - name: Set action output
       id: set-output
-      run: echo "message=$(cat $GITHUB_OUTPUT)" >> $GITHUB_ENV
+      run: echo "message=$(cat $GITHUB_OUTPUT)"
       shell: bash
 
 outputs:
