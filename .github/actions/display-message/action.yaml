@@ -11,7 +11,14 @@ runs:
     - name: display message
       run: python -m print_message
       shell: bash
+    
+    # Capture the output from GITHUB_OUTPUT and set it as the action's output
+    - name: Set action output
+      id: set-output
+      run: echo "message=$(cat $GITHUB_OUTPUT)" >> $GITHUB_ENV
+      shell: bash
 
 outputs:
   message:
     description: 'The hello world message'
+    value: ${{ steps.set-output.outputs.message }}
