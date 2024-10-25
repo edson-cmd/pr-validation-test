@@ -1,0 +1,19 @@
+name: 'Display message'
+description: 'Runs a python script that sets up a message as github output.'
+runs:
+  using: 'composite'
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.8
+
+    - name: display message
+      id: display
+      run: python -m print_message
+      shell: bash
+
+outputs:
+  message:
+    description: 'The hello world message'
+    value: ${{ steps.display.outputs.message }}

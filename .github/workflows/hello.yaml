@@ -1,0 +1,20 @@
+name: Hello
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout current GitHub Actions workflow repository
+        uses: actions/checkout@v3
+        
+      - name: Hello
+        id: hello
+        uses: ./.github/actions/display-message
+
+      - name: Display Hello
+        run: |
+            echo "${{ steps.hello.outputs.message }}"
