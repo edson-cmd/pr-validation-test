@@ -14,8 +14,8 @@ jobs:
           fetch-depth: 0
       - name: Hello
         id: hello
-        run: |
-            python print_message.py
+        uses: ./.github/actions/display-message
+
       - name: Display Hello
         run: |
             echo "${{ steps.hello.outputs.message }}"
