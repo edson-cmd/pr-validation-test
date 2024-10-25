@@ -12,3 +12,6 @@ runs:
       run: python -m print_message
       shell: bash
 
+outputs:
+  message:
+    description: 'The hello world message'
